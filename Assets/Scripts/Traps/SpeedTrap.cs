@@ -5,11 +5,10 @@ using UnityEngine;
 
 namespace MaxG {
 
-    public sealed class SpeedTrap : TrapsParent {
-        protected override void OnCollisionEnter(Collision collision) {
+    public sealed class SpeedTrap : Traps {
+        protected override void TakeTrap(Collider collision) {
             if (collision.gameObject.layer == LayerMask.NameToLayer("Player")) {
                 collision.gameObject.AddComponent<SpeedDecreaseEffect>();
-                Destroy(transform.parent);
             }
         }
     }

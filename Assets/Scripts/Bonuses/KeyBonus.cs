@@ -5,16 +5,22 @@ using UnityEngine;
 
 namespace MaxG {
 
-    public sealed class KeyBonus : BonusParent {
+    public sealed class KeyBonus : Bonus {
         private GameLogic _logic;
-        private void Awake() {
+        
+        protected override void Awake() {
+            base.Awake();
             _logic = FindObjectOfType<GameLogic>();
         }
+        
         private void Start() {
             _logic.CountAddedKey();
         }
-        protected override void OnCollisionEnter(Collision collision) {
-            _logic.CountCollectedKey();
+        
+        protected override void TakeBonus(Collider collision) {
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Player")) {
+                _logic.CountCollectedKey();
+            }
         }
     }
 }

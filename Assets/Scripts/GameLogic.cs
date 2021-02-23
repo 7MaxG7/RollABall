@@ -9,8 +9,12 @@ namespace MaxG {
     /// <summary>
     ///  Class for main game rules
     /// </summary>
-    public sealed class GameLogic : MonoBehaviour {
+    public sealed class GameLogic : MonoBehaviour
+    {
+        [SerializeField] private StuffTakenEvent _eventController;
         private int _keysAmount = 0;
+        
+        public StuffTakenEvent StuffTakenEvent { get => _eventController; }
 
         public void CountAddedKey() {
             ++_keysAmount;

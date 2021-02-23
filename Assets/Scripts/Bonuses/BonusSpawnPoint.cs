@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.Random;
@@ -16,31 +17,27 @@ namespace MaxG {
         }
 
         private void Init() {
+            if (_keyBonusPref == null || _speedBonusPref == null || _invulnerabilityBonusPref == null) {
+                throw new Exception($"{gameObject.name}: no link to bonus prefab.");
+            }
             GameObject currentBonusPref = default;
-            BonusType currentBonusType = (BonusType)Range(0, (int)BonusType.Count - 1);
+            BonusTypeEnum currentBonusType = (BonusTypeEnum)Range(0, (int)BonusTypeEnum.Count);
             switch (currentBonusType) {
-                case BonusType.Key:
+                case BonusTypeEnum.Key:
                     currentBonusPref = _keyBonusPref;
                     break;
-                case BonusType.Speed:
+                case BonusTypeEnum.Speed:
                     currentBonusPref = _speedBonusPref;
                     break;
-                case BonusType.Invul:
+                case BonusTypeEnum.Invul:
                     currentBonusPref = _invulnerabilityBonusPref;
                     break;
-                case BonusType.Count:
+                case BonusTypeEnum.Count:
                     break;
                 default:
                     break;
             }
             Instantiate(currentBonusPref, transform);
         }
-    }
-
-    public enum BonusType {
-        Key = 0,
-        Speed = 1,
-        Invul = 2,
-        Count,
     }
 }

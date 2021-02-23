@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3936788757597041941}
   - component: {fileID: 8652397659309046685}
+  - component: {fileID: 8875421622304083512}
   m_Layer: 0
   m_Name: DeadTrap
   m_TagString: Untagged
@@ -44,6 +45,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df26863bcc401904eabe66597f3745a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &8875421622304083512
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3608173770763964810}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4, y: 0.4, z: 0.4}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3944308107463656459
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,7 +69,6 @@ GameObject:
   - component: {fileID: 5206105486695724581}
   - component: {fileID: 3756806551079756276}
   - component: {fileID: 7537735386082426253}
-  - component: {fileID: 2451376732947447}
   m_Layer: 0
   m_Name: TrapMesh
   m_TagString: Untagged
@@ -124,16 +137,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &2451376732947447
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3944308107463656459}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}

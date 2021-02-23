@@ -5,14 +5,17 @@ using UnityEngine;
 
 namespace MaxG {
 
-    public sealed class SpeedIncreaseEffect : EffectParent {
+    public sealed class SpeedIncreaseEffect : Effect {
         private float _speedMultiplier = 2;
         private float _speedIncrease;
 
+        protected override void Awake() {
+            base.Awake();
+        }
         private void Start() {
             _speedIncrease = _player.MoveSpeed * (_speedMultiplier - 1);
             _player.MoveSpeed += _speedIncrease;
-            Destroy(this, 3);
+            Destroy(this, _effectDuration);
         }
 
         protected override void OnDestroy() {

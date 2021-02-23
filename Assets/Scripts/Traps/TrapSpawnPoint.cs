@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.Random;
@@ -15,27 +16,24 @@ namespace MaxG {
         }
 
         private void Init() {
+            if (_deadTrapPref == null || _speedTrapPref == null) {
+                throw new Exception($"{gameObject.name}: no link to trap prefab.");
+            }
             GameObject currentTrapPref = default;
-            TrapType currentTrapType = (TrapType)Range(0, (int)TrapType.Count - 1);
+            TrapTypeEnum currentTrapType = (TrapTypeEnum)Range(0, (int)TrapTypeEnum.Count);
             switch (currentTrapType) {
-                case TrapType.Dead:
+                case TrapTypeEnum.Dead:
                     currentTrapPref = _deadTrapPref;
                     break;
-                case TrapType.Speed:
+                case TrapTypeEnum.Speed:
                     currentTrapPref = _speedTrapPref;
                     break;
-                case TrapType.Count:
+                case TrapTypeEnum.Count:
                     break;
                 default:
                     break;
             }
             Instantiate(currentTrapPref, transform);
         }
-    }
-
-    public enum TrapType {
-        Dead = 0,
-        Speed = 1,
-        Count,
     }
 }

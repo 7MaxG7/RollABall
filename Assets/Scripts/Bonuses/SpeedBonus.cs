@@ -5,12 +5,11 @@ using UnityEngine;
 
 namespace MaxG {
 
-    public sealed class SpeedBonus : BonusParent {
+    public sealed class SpeedBonus : Bonus {
 
-        protected override void OnCollisionEnter(Collision collision) {
+        protected override void TakeBonus(Collider collision) {
             if (collision.gameObject.layer == LayerMask.NameToLayer("Player")) {
                 collision.gameObject.AddComponent<SpeedDecreaseEffect>();
-                Destroy(transform.parent);
             }
         }
     }

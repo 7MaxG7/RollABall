@@ -5,11 +5,10 @@ using UnityEngine;
 
 namespace MaxG {
 
-    public sealed class DeadTrap : TrapsParent {
-        protected override void OnCollisionEnter(Collision collision) {
+    public sealed class DeadTrap : Traps {
+        protected override void TakeTrap(Collider collision) {
             if (collision.gameObject.layer == LayerMask.NameToLayer("Player")) {
                 collision.gameObject.AddComponent<DeadEffect>();
-                Destroy(transform.parent);
             }
         }
     }
