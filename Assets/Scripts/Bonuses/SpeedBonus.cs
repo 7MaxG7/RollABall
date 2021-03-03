@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MaxG {
 
-    public sealed class SpeedBonus : Bonus {
+    public sealed class SpeedBonus : Bonuses {
 
         protected override void TakeBonus(Collider collision) {
             if (collision.gameObject.layer == LayerMask.NameToLayer("Player")) {

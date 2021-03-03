@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace MaxG {
 
-    public sealed class KeyBonus : Bonus {
+    public sealed class KeyBonus : Bonuses {
         private GameLogic _logic;
         
         protected override void Awake() {

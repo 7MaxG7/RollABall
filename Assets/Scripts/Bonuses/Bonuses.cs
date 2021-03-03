@@ -8,7 +8,7 @@ namespace MaxG {
     /// <summary>
     /// Parent class for all bonuses
     /// </summary>
-    public abstract class Bonus : PickupStuff {
+    public abstract class Bonuses : PickupStuff {
         protected override void TakeStuff(Collider collision) {
             base.TakeStuff(collision);
             TakeBonus(collision);

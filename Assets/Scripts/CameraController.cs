@@ -13,20 +13,21 @@ namespace MaxG
     public sealed class CameraController : MonoBehaviour
     {
         private Animator _anim;
-        private StuffTakenEvent _stuffTakenEvent;
+        // private StuffTakenEvent _stuffTakenEvent;
         private readonly int _shakeTrigger = Animator.StringToHash("shake");
 
         void Awake() {
             _anim = GetComponent<Animator>();
-            _stuffTakenEvent = FindObjectOfType<GameLogic>().StuffTakenEvent;
+            // _stuffTakenEvent = new StuffTakenEvent();
         }
 
-        private void Start() {
-            _stuffTakenEvent.AddListener(ShakeCam);
-        }
+        // private void Start() {
+        //     _stuffTakenEvent.AddListener(@null => _anim.SetTrigger(_shakeTrigger));
+        // }
 
-        private void ShakeCam() {
+        public void ShakeCam(GameObject @null) {
             _anim.SetTrigger(_shakeTrigger);
+            // _stuffTakenEvent.InvokeEvent(@null);
         }
     }
 }
