@@ -1,31 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using MaxG;
 using UnityEngine;
 
 /// <summary>
-/// Class for controlling ball / labirinth (not shure about game rules)
+/// Class for controlling labirinth
 /// </summary>
-public sealed class MapController : MonoBehaviour {
-    [SerializeField] private float _controllerSensitivity;
-    private Transform _transform;
+public sealed class MapController : IUpdater {
+    private readonly float _controllerSensitivity;
+    private readonly Transform _transform;
 
-    private void Awake() {
-        if (_controllerSensitivity == 0)
-            _controllerSensitivity = 50;
-        _transform = transform;
-    }
-    private void Update() {
-        float horizontalInput = Input.GetAxis("Mouse X");
-        float verticalInput = Input.GetAxis("Mouse Y");
-        RotateMap(0-horizontalInput, verticalInput);
+    private MapController(MapConfig mapConfig, GameObject mapObj) {
+        _controllerSensitivity = mapConfig.InputSensitivity;
+        _transform = mapObj.transform;
     }
 
-    private void RotateMap(float horizontalRotate, float verticalRotate) {
+    public void DoUpdate(float deltaTime) {
+        RotateMap(0 - Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"), deltaTime);
+    }
+
+    private void RotateMap(float horizontalRotate, float verticalRotate, float deltaTime) {
         if (horizontalRotate != 0) {
-            _transform.Rotate(0, 0, horizontalRotate * _controllerSensitivity * Time.deltaTime, Space.Self);
+            _transform.Rotate(0, 0, horizontalRotate * deltaTime * _controllerSensitivity, Space.Self);
         }
         if (verticalRotate != 0) {
-            _transform. Rotate(verticalRotate * _controllerSensitivity * Time.deltaTime, 0, 0, Space.Self);
+            _transform. Rotate(verticalRotate * deltaTime * _controllerSensitivity, 0, 0, Space.Self);
         }
     }
 }

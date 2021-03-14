@@ -8,12 +8,18 @@ namespace MaxG {
     /// <summary>
     /// Parent class for all bonuses
     /// </summary>
-    public abstract class Bonuses : PickupStuff {
-        protected override void TakeStuff(Collider collision) {
-            base.TakeStuff(collision);
-            TakeBonus(collision);
-        }
+    public class Bonuses : PickupStuff, IUpdater {
 
-        protected abstract void TakeBonus(Collider collision);
+        public BonusTypeEnum bonusType;
+        
+        // protected override void TakeStuff(Collider collision) {
+        //     base.TakeStuff(collision);
+        //     TakeBonus(collision);
+        // }
+
+        protected virtual void TakeBonus(Collider collision) {}
+        public void DoUpdate(float deltaTime) {
+            
+        }
     }
 }

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - TrapSpawnPoint
+  - BonusSpawnPoint
+  - BallSpawnPoint
   layers:
   - Default
   - TransparentFX

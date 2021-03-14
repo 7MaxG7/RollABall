@@ -9,16 +9,12 @@ namespace MaxG {
     /// <summary>
     /// Parent class for all traps
     /// </summary>
-    public class Traps : PickupStuff {
+    public class Traps : PickupStuff, IUpdater {
         
         public TrapTypeEnum trapType;
-        
-        protected override void TakeStuff(Collider collision) {
-            base.TakeStuff(collision);
-            TakeTrap(collision);
-        }
 
-        protected virtual void TakeTrap(Collider collision) {
+        public void DoUpdate(float deltaTime) {
+            
         }
     }
 }

@@ -10,20 +10,20 @@ namespace MaxG {
     /// <summary>
     ///  Class for main game rules
     /// </summary>
-    public sealed class GameLogic : MonoBehaviour {
-        [SerializeField] private Canvas _canvas;
+    public sealed class GameLogic {
+
+        private Transform _canvas;
         private int _keysAmount = 0;
-        private StringsKiller _strKiller;
-        private GameObject _winScreen; 
-
-        // [SerializeField] private StuffTakenEvent _eventController;
-        // public StuffTakenEvent StuffTakenEvent { get => _eventController; }
+        private LogicConfig _logicConfig;
         
-        private void Awake() {
-            _strKiller = new StringsKiller();
-            _winScreen = Resources.Load<GameObject>(_strKiller.path.prefsFolder + _strKiller.path.winScreenName);
+        public GameLogic(LogicConfig logicConfig, Transform canvas) {
+            if (!logicConfig || !canvas)
+                throw new Exception($"{this}: logic config or canvas link is null");
+            
+            _logicConfig = logicConfig;
+            _canvas = canvas;
         }
-
+        
         public void CountAddedKey() {
             ++_keysAmount;
         }
@@ -39,7 +39,7 @@ namespace MaxG {
         }
 
         private void WinGame() {
-            Instantiate(_winScreen, _canvas.transform);
+            GameObject.Instantiate(_logicConfig.WinScreenPref, _canvas);
         }
     }
 }

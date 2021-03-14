@@ -4,11 +4,14 @@
         
         public class Tag {
             public string trapSpawnPoint = "TrapSpawnPoint";
+            public string bonusSpawnPoint = "BonusSpawnPoint";
+            public string ballSpawnPoint = "BallSpawnPoint";
         }
 
         public class Path {
-            public string prefsFolder = "Prefs/";
-            public string winScreenName = "WinScreen";
+            public string winScreenPref = "Prefs/WinScreen";
+            public string trapPref = "Prefs/Trap";
+            public string labirinthPref = "Prefs/Labirinth";
         }
 
         public StringsKiller() {

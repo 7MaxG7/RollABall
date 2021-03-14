@@ -8,7 +8,6 @@ namespace MaxG
         public StuffTakenEvent stuffTakenEvent;
 
         protected virtual void Awake() {
-            // stuffTakenEvent = FindObjectOfType<GameLogic>().StuffTakenEvent;
             stuffTakenEvent = new StuffTakenEvent();
         }
         
@@ -16,11 +15,10 @@ namespace MaxG
             TakeStuff(collision);
         }
 
-        protected virtual void TakeStuff(Collider collision) {
+        protected void TakeStuff(Collider collision) {
             if (collision.gameObject.layer == LayerMask.NameToLayer("Player")) {
                 stuffTakenEvent.InvokeEvent(collision.gameObject);
                 Destroy(transform.gameObject);
-                // Destroy(transform.parent.gameObject);
             }
         }
 

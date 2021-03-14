@@ -8,16 +8,15 @@ using static UnityEngine.Debug;
 namespace MaxG {
     
     public sealed class Player : MonoBehaviour {
-        [SerializeField] private float _moveSpeed;
+        public GameLogic gameLogic;
         
+        [SerializeField] private float _moveSpeed;
         private Dictionary<TrapTypeEnum, Action> _trapActions;
-        private GameLogic _logic;
 
         public float MoveSpeed { get => _moveSpeed; set => _moveSpeed = value; }
         // public bool IsInvulnerable = false;
 
         private void Awake() {
-            _logic = FindObjectOfType<GameLogic>();
             _trapActions = new Dictionary<TrapTypeEnum, Action>() {
                 {TrapTypeEnum.Dead, TakeDamage}
             };
@@ -36,7 +35,7 @@ namespace MaxG {
         private void TakeDamage() {
             // if (!IsInvulnerable) {
                 Destroy(gameObject);
-                _logic.GameOver();
+                gameLogic.GameOver();
             // }
         }
 

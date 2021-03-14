@@ -1,5 +1,5 @@
 ﻿namespace MaxG {
     public interface IUpdater : IController {
-        void DoUpdate();
+        void DoUpdate(float deltaTime);
     }
 }

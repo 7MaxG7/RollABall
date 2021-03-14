@@ -2,10 +2,10 @@
 
 namespace MaxG {
     
-    public sealed class GameController : IController, IInitializer, IUpdater, ICleanUper {
-        private List<IInitializer> _initializers;
-        private List<IUpdater> _updaters;
-        private List<ICleanUper> _cleanupers;
+    public sealed class GameController : IInitializer, IUpdater, ICleanUper {
+        private readonly List<IInitializer> _initializers;
+        private readonly List<IUpdater> _updaters;
+        private readonly List<ICleanUper> _cleanupers;
 
         public GameController() {
             _initializers = new List<IInitializer>();
@@ -31,9 +31,9 @@ namespace MaxG {
             }
         }
 
-        public void DoUpdate() {
+        public void DoUpdate(float deltaTime) {
             foreach (var updateController in _updaters) {
-                updateController.DoUpdate();
+                updateController.DoUpdate(deltaTime);
             }
         }
 
