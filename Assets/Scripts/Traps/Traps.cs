@@ -9,12 +9,8 @@ namespace MaxG {
     /// <summary>
     /// Parent class for all traps
     /// </summary>
-    public class Traps : PickupStuff, IUpdater {
+    public class Traps : PickupStuff {
         
         public TrapTypeEnum trapType;
-
-        public void DoUpdate(float deltaTime) {
-            
-        }
     }
 }

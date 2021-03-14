@@ -16,12 +16,6 @@ namespace MaxG {
             
             var pickupsController = new PickupsController(configsManager.SpawnsConfig, gameLogic);
             gameController.Add(pickupsController);
-            foreach (var trap in pickupsController.Traps) {
-                gameController.Add(trap);
-            }
-            foreach (var bonus in pickupsController.Bonuses) {
-                gameController.Add(bonus);
-            }
         }
 
     }
